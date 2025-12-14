@@ -10,8 +10,9 @@ class AEEMathEngine:
     
     def __init__(self, strength: float = 0.25):
         self.strength = strength
-        # El umbral por defecto es el 40% de la fuerza de inyección
-        self.threshold = strength * 0.4
+        # AJUSTE CRÍTICO V8: Bajamos el ratio a 0.15 para sobrevivir a ruido alto.
+        # Antes: 0.4 (Muy estricto) -> Ahora: 0.15 (Resiliente)
+        self.threshold = strength * 0.15
 
     def compute_direction(self, embedding: np.ndarray, user_id: int) -> np.ndarray:
         """
